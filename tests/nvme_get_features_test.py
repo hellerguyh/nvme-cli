@@ -77,10 +77,10 @@ class TestNVMeGetMandatoryFeatures(TestNVMe):
                 - None
         """
         if str(feature_id) == "0x09":
-            for vector in self.vector_list:
+            for index in range(len(self.vector_list)):
                 get_feat_cmd = "nvme get-feature " + self.ctrl + \
                                " --feature-id=" + str(feature_id) + \
-                               " --cdw11=" + str(vector)
+                               " --cdw11=" + str(index)
                 proc = subprocess.Popen(get_feat_cmd,
                                         shell=True,
                                         stdout=subprocess.PIPE)
